@@ -297,10 +297,10 @@ class CephAnsible(ansible.Ansible):
                 if role.startswith('client'):
                     if remote.os.package_type == 'rpm':
                         remote.run(args=['sudo', 'yum', 'install',
-                                         '-y', 'ceph-common'])
+                                         '-y', 'ceph-common', 'ceph-test'])
                     else:
                         remote.run(args=['sudo', 'apt-get', '-y',
-                                         'install', 'ceph-common'])
+                                         'install', 'ceph-common', 'ceph-test'])
                     teuthology.sudo_write_file(remote, '/etc/ceph/ceph.conf',
                                                ceph_conf_contents.getvalue())
                     teuthology.sudo_write_file(
